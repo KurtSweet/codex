@@ -1,0 +1,182 @@
+:root {
+  color-scheme: light dark;
+  --background: #0f172a;
+  --background-elevated: #111c34;
+  --panel-border: #1f2937;
+  --text: #e2e8f0;
+  --muted-text: #94a3b8;
+  --accent: #60a5fa;
+  --accent-strong: #3b82f6;
+  --danger: #ef4444;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, 'Liberation Mono',
+    Menlo, Courier, monospace;
+  --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont,
+    'Helvetica Neue', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #1d4ed8, #020617 50%, #000);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header,
+.app-footer {
+  padding: 2.5rem clamp(1.5rem, 4vw, 4rem);
+  text-align: center;
+}
+
+.app-header h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.02em;
+}
+
+.app-header p {
+  margin: 0 auto;
+  max-width: 60ch;
+  color: var(--muted-text);
+}
+
+.app-layout {
+  display: grid;
+  gap: 2rem;
+  padding: 0 clamp(1.5rem, 4vw, 4rem) 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.panel {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 1.25rem;
+  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.65);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+button {
+  appearance: none;
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: white;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+button:hover,
+button:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.35);
+}
+
+button.secondary {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--text);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow: none;
+}
+
+button.secondary:hover,
+button.secondary:focus-visible {
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.45);
+}
+
+.input-area {
+  min-height: 18rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px dashed rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.35);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  overflow-y: auto;
+  outline: none;
+  white-space: pre-wrap;
+}
+
+.input-area:empty::before {
+  content: 'Paste rich text here or start typing...';
+  color: var(--muted-text);
+}
+
+.input-hint {
+  margin: 0;
+  color: var(--muted-text);
+  font-size: 0.9rem;
+}
+
+.output-area {
+  min-height: 18rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(2, 6, 23, 0.55);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.status {
+  min-height: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--muted-text);
+}
+
+.status.success {
+  color: #34d399;
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.app-footer {
+  margin-top: auto;
+  font-size: 0.9rem;
+  color: var(--muted-text);
+}
+
+@media (max-width: 640px) {
+  .panel {
+    padding: 1.25rem;
+  }
+
+  .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  button {
+    width: 100%;
+  }
+}
