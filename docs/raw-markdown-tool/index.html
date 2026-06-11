@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Raw Markdown Converter</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Raw Markdown Converter</h1>
+      <p>
+        Paste any formatted text into the input panel and the tool will convert it
+        to plain Markdown syntax with all delimiters visible. The conversion runs
+        as you type or paste.
+      </p>
+    </header>
+
+    <main class="app-layout">
+      <section class="panel input-panel">
+        <div class="panel-header">
+          <h2>Formatted input</h2>
+          <button id="clear-button" type="button" class="secondary">Clear</button>
+        </div>
+        <div
+          id="input-area"
+          class="input-area"
+          contenteditable="true"
+          spellcheck="false"
+          aria-label="Formatted input"
+        ></div>
+        <p class="input-hint">
+          Tip: copy rich text from any application, then paste it here. Use Shift +
+          Enter for manual line breaks.
+        </p>
+      </section>
+
+      <section class="panel output-panel">
+        <div class="panel-header">
+          <h2>Raw Markdown</h2>
+          <div class="actions">
+            <button id="copy-button" type="button">Copy Markdown</button>
+          </div>
+        </div>
+        <textarea
+          id="output-area"
+          class="output-area"
+          readonly
+          aria-label="Raw Markdown output"
+        ></textarea>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>
+        The converter runs entirely in your browser. No data ever leaves this
+        page.
+      </p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
